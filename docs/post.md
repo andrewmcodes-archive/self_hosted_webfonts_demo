@@ -2,6 +2,12 @@
 
 A font can make or break your design, and as a result many of us are probably not using the default system fonts. [Google Fonts](https://fonts.google.com) makes it really easy to find the perfect font, but it can come with a performance cost. If you are loading a font directly from Google, the following tutorial is guaranteed to speed up your Rails application.
 
+Make your Rails app do this:
+
+![Cowboy Pooh Gif](https://media.giphy.com/media/MFgOHNWX6dDxwJ7bKe/giphy.gif)
+
+(GET IT?!?)
+
 To demonstrate, let's build a quick demo app.
 
 This is a tutorial, but I will assume you have a basic understanding of Ruby on Rails. If not, and you need me to elaborate on anything, let me know in the comments.
@@ -25,8 +31,8 @@ bin/rails generate controller welcome index
 # config/routes.rb
 
 Rails.application.routes.draw do
-  get "welcome/index"
-  root "welcome#index"
+get "welcome/index"
+root "welcome#index"
 end
 ```
 
@@ -59,7 +65,7 @@ Inside of `application.scss`, add the following CSS rules to specify the font fa
 // app/javascript/packs/application.scss
 
 html {
-  font-family: 'Lato', sans-serif;
+font-family: 'Lato', sans-serif;
 }
 ```
 

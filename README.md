@@ -1,24 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Prerequisites
 
-Things you may want to cover:
+- Ruby `2.6.6`
+- Rails `6.0.2.2`
+- Node `>12`
+- Yarn
 
-* Ruby version
+### Check out the repository
 
-* System dependencies
+```bash
+git clone git@github.com:andrewmcodes/self_hosted_webfonts_demo.git
+```
 
-* Configuration
+## Run the setup command
 
-* Database creation
+```bash
+bin/setup
+```
 
-* Database initialization
+## Start the Rails server
 
-* How to run the test suite
+You can start the rails server using the command given below.
 
-* Services (job queues, cache servers, search engines, etc.)
+```ruby
+bundle exec rails s
+```
 
-* Deployment instructions
-
-* ...
+And now you can visit the site with the URL http://localhost:3000

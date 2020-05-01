@@ -1,3 +1,9 @@
+# Instantly speed up your Rails application by self-hosting your fonts
+
+A font can make or break your design, and as a result many of us are probably not using the default system fonts. [Google Fonts](https://fonts.google.com) makes it really easy to find the perfect font, but it can come with a performance cost. If you are loading a font directly from Google, the following tutorial is guaranteed to speed up your Rails application.
+
+To demonstrate, let's build a quick demo app.
+
 This is a tutorial, but I will assume you have a basic understanding of Ruby on Rails. If not, and you need me to elaborate on anything, let me know in the comments.
 
 ## Create a new Rails project

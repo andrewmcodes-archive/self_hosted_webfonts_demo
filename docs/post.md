@@ -36,7 +36,7 @@ Now that we have a landing page, we should snazz it up a bit with a nice font. I
 
 ![Google Fonts](https://dev-to-uploads.s3.amazonaws.com/i/6qbu8zru7kgr2a2q9f6u.png)
 
-Now that we have our fonts, lets add the link to the head of our application in `app/views/layouts/application.html.erb` on the line above your `stylesheet_link_tag` (line #7 if you are on a fresh Rails app):
+Now that we have our fonts, let’s add the link to the head of our application in `app/views/layouts/application.html.erb` on the line above your `stylesheet_link_tag` (line #7 if you are on a fresh Rails app):
 
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
@@ -71,7 +71,7 @@ Now if we start the Rails server (`bin/rails s`), and navigate to `localhost:300
 
 Even though our view looks much better with the new font, we have just degraded the performance of our application and introduced a render blocking resource. When we load Lato, we are actually loading a stylesheet, and the browser will not render our page until it finishes retrieving the file from Google's servers.
 
-Introducing a render blocking resource isn't great, but what's worse is we are now relying on Google to send us that file for us to render our page. Users will now be waiting longer for the page to load, and that time can change without warning as Google's server potentially come under heavy load.
+Introducing a render blocking resource isn't great, but what's worse is we are now relying on Google to send us that file for us to render our page. Users will now be waiting longer for the page to load, and that time will fluctuate depending on how much traffic Google’s servers are handling.
 
 ![Lighthouse Audit: CDN](https://dev-to-uploads.s3.amazonaws.com/i/gwcrkehoye2yprldblz6.png)
 
@@ -92,7 +92,7 @@ A quick search on NPM for `typeface lato` will reveal the package we are looking
 yarn add typeface-lato
 ```
 
-Now lets remove the old way we were getting the font:
+Now let's remove the old way we were getting the font:
 
 ```diff
 - <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
@@ -113,12 +113,16 @@ Let's see if we have fixed the performance regression via Lighthouse:
 
 ![Lighthouse Audit: Self Hosted](https://dev-to-uploads.s3.amazonaws.com/i/3a17kj9bjoct5nj1vp4x.png)
 
+Lighthouse is no longer reporting a render blocking resource, we have boosted our performance!
+
 ## Summary
 
 We should be good to go! This is a simple, quick migration, which will reduce your time to first meaningful paint, and overall performance. It is also easily overlooked (speaking from personal experience).
 
-I won't be going into much detail, but this also positions you to make further enhancement's, like requiring the font's in a separate pack and and take advantage of `javascript_packs_with_chunks_tag`.
+It is worth noting that these Lighthouse audits were run against the Rails development server, and are not a true substitute for running them in production, but should give us a good enough idea of where we are at. For more accurate results, you should run these audits in production or start the application in production mode locally.
 
-Hopefully this was helpful! Let me know what idea's for further enhancements in the comments, I am curious to try some out!
+This change also positions you to make further enhancements, like requiring the fonts in a separate JavaScript pack, which will allow you to take advantage of `javascript_packs_with_chunks_tag`. I will leave that for you to explore, but you can see an example, along with the code for this tutorial, [here](https://github.com/andrewmcodes/self_hosted_webfonts_demo).
+
+Hopefully this was helpful! If you have taken another approach, I would be curious to hear about it in the comments.
 
 Happy coding!
